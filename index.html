@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#15112f">
+<title>Pika-Pika & Pipina 💙💜</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080817; --text:#f7f5ff; --muted:#b9b5d4; --blue:#55b8ff; --violet:#9d75ff; --line:rgba(255,255,255,.12); --shadow:0 25px 70px rgba(0,0,0,.35);}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 15% 10%,rgba(65,139,255,.20),transparent 32%),radial-gradient(circle at 88% 18%,rgba(155,89,255,.20),transparent 34%),radial-gradient(circle at 50% 85%,rgba(64,191,255,.10),transparent 38%),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6;overflow-x:hidden}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:20;width:min(1040px,calc(100% - 28px));display:flex;justify-content:space-between;align-items:center;padding:11px 15px;border:1px solid var(--line);border-radius:22px;background:rgba(9,8,25,.68);backdrop-filter:blur(18px)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;white-space:nowrap;flex-shrink:0}.brand-dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet))}
+.navlinks{display:flex;gap:6px;flex-shrink:0}.navlinks a{padding:8px 11px;border-radius:12px;color:var(--muted);font-size:14px;white-space:nowrap}
+.hero{min-height:100vh;display:grid;place-items:center;padding:120px 20px 70px;text-align:center}
+.logo-wrap{width:min(320px,68vw);aspect-ratio:1/1;margin:0 auto 24px;background:#fff;border-radius:50%;border:5px solid #fff;overflow:hidden;display:grid;place-items:center}.logo-wrap img{width:100%;height:100%;object-fit:cover}
+h1{font-family:"Playfair Display",serif;font-size:clamp(34px,6vw,62px);line-height:1.08;margin:18px auto 16px;max-width:850px;background:linear-gradient(100deg,#fff 15%,#9bd7ff 48%,#c19aff 82%);-webkit-background-clip:text;color:transparent}
+section{width:min(1040px,calc(100% - 30px));margin:0 auto;padding:85px 0}.section-title{text-align:center;margin-bottom:36px}.card{background:linear-gradient(145deg,rgba(32,28,71,.76),rgba(14,13,37,.74));border:1px solid var(--line);border-radius:24px;padding:25px}
+.gallery-ricordi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
+.memory{margin:0;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer}.memory img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.memory figcaption{padding:10px 12px;font-size:12.5px;text-align:center;background:rgba(22,19,52,.75);min-height:44px;display:grid;place-items:center}
+.gallery-nav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:24px}.gallery-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;font-size:22px;cursor:pointer}#gPageInfo{color:#b9b5d4;font-size:14px;background:rgba(255,255,255,.06);padding:6px 14px;border-radius:999px;border:1px solid var(--line)}
+.letter{max-width:850px;margin:auto;padding:38px;border-radius:30px;background:linear-gradient(145deg,rgba(65,52,126,.34),rgba(23,19,55,.8));border:1px solid rgba(181,166,255,.18)}.letter p{color:#dedbf0;font-size:17px;line-height:1.7;margin-bottom:16px}
+.future{display:grid;grid-template-columns:1.15fr.85fr;gap:18px}.qr-card{text-align:center}.qr-card img{width:190px;background:white;padding:12px;border-radius:18px;margin:12px auto}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;place-items:center;padding:20px}.lightbox.active{display:grid}#lb-img{max-width:100%;max-height:82vh;border-radius:16px}
+@media(max-width:900px){.gallery-ricordi{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.gallery-ricordi{grid-template-columns:1fr}.nav{width:calc(100% - 10px);top:8px;padding:8px 10px}.brand{font-size:12.5px}.navlinks a{padding:5px 6px;font-size:10.5px}}
+</style>
+</head>
+<body>
+<nav class="nav"><a class="brand" href="#home"><span class="brand-dot"></span><span>Pika-Pika & Pipina</span></a><div class="navlinks"><a href="#storia">Storia</a><a href="#ricordi">Ricordi</a><a href="#lettera">Lettera</a><a href="#futuro">Futuro</a></div></nav>
+<header class="hero" id="home"><div class="logo-wrap"><img src="assets/logo.png" alt="Logo"></div><h1>Degli anni passati che ci portiamo anche nel futuro,</h1><p>Un piccolo spazio per la nostra amicizia.</p></header>
+<section id="ricordi"><div class="section-title"><h2>Le nostre avventure</h2><p>6 alla volta, frecce sotto per scorrere.</p></div>
+<div class="gallery-ricordi" id="gallery">
+<figure class="memory" data-src="assets/duo_delle_renne.jpg" data-caption="Duo delle renne"><img src="assets/duo_delle_renne.jpg"><figcaption>Duo delle renne</figcaption></figure>
+<figure class="memory" data-src="assets/mamma_cattiva_inBici.jpg" data-caption="Mamma cattiva in bici"><img src="assets/mamma_cattiva_inBici.jpg"><figcaption>Mamma cattiva in bici</figcaption></figure>
+<figure class="memory" data-src="assets/lotta_madre_figlio.jpg" data-caption="Lotta Madre Figlio"><img src="assets/lotta_madre_figlio.jpg"><figcaption>Lotta Madre Figlio</figcaption></figure>
+<figure class="memory" data-src="assets/Mery_distratta.jpg" data-caption="Mamma distratta"><img src="assets/Mery_distratta.jpg"><figcaption>Mamma distratta</figcaption></figure>
+<figure class="memory" data-src="assets/Mery_inBici.jpg" data-caption="Mamma tranquilla"><img src="assets/Mery_inBici.jpg"><figcaption>Stranamente tranquilla</figcaption></figure>
+<figure class="memory" data-src="assets/Mery_hellokitty.jpg" data-caption="Hello Kitty"><img src="assets/Mery_hellokitty.jpg"><figcaption>Hello Kitty</figcaption></figure>
+<figure class="memory" data-src="assets/Mery_minions.jpg" data-caption="Mery Minions"><img src="assets/Mery_minions.jpg"><figcaption>Mery Minions</figcaption></figure>
+<figure class="memory" data-src="assets/Mery_aspetta_immobiliare.jpg" data-caption="Compagnia ovunque"><img src="assets/Mery_aspetta_immobiliare.jpg"><figcaption>Compagnia ovunque</figcaption></figure>
+<figure class="memory" data-src="assets/Segnalazione_Mery.jpg" data-caption="Ribellione figlio"><img src="assets/Segnalazione_Mery.jpg"><figcaption>Ribellione del figlio</figcaption></figure>
+<figure class="memory" data-src="assets/vicinanza_dei_letti.png" data-caption="Vicinanza letti"><img src="assets/vicinanza_dei_letti.png"><figcaption>Vicinanza letti - Pika & terronina</figcaption></figure>
+<figure class="memory" data-src="assets/vicini_nell_armadietto.png" data-caption="Vicini armadietto 57 & 56"><img src="assets/vicini_nell_armadietto.png"><figcaption>Vicini armadietto 57 & 56</figcaption></figure>
+</div>
+<div class="gallery-nav"><button id="gPrev">‹</button><span id="gPageInfo">1 / 2</span><button id="gNext">›</button></div>
+</section>
+<section id="futuro"><div class="future"><div class="card"><h3>Un sito che continua</h3><p>QR non cambia.</p></div><div class="card qr-card"><h3>Il nostro QR 💜</h3><img src="assets/qrcode.png" alt="QR"><div>Scansiona https://cryxyz08.github.io/pika-pipina/</div></div></div></section>
+<div class="lightbox" id="lightbox"><button id="lb-close" style="position:absolute;top:18px;right:18px">✕</button><button id="lb-prev" style="position:absolute;left:18px;top:50%">‹</button><img id="lb-img" src=""><button id="lb-next" style="position:absolute;right:18px;top:50%">›</button><div id="lb-cap"></div></div>
+<script>
+const memories=Array.from(document.querySelectorAll('.memory'));const lightbox=document.getElementById('lightbox');const lbImg=document.getElementById('lb-img');const lbCap=document.getElementById('lb-cap');let currentIndex=0;function openLightbox(i){currentIndex=i;lbImg.src=memories[i].dataset.src;lbCap.textContent=memories[i].dataset.caption;lightbox.classList.add('active')}function closeLightbox(){lightbox.classList.remove('active')}memories.forEach((m,i)=>m.addEventListener('click',()=>openLightbox(i)));document.getElementById('lb-close').addEventListener('click',closeLightbox);document.getElementById('lb-prev').addEventListener('click',()=>{currentIndex=(currentIndex-1+memories.length)%memories.length;lbImg.src=memories[currentIndex].dataset.src});document.getElementById('lb-next').addEventListener('click',()=>{currentIndex=(currentIndex+1)%memories.length;lbImg.src=memories[currentIndex].dataset.src});lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
+const itemsPerPage=6;let galleryPage=0;const gPrev=document.getElementById('gPrev');const gNext=document.getElementById('gNext');const gInfo=document.getElementById('gPageInfo');function updateGallery(){const total=Math.ceil(memories.length/itemsPerPage);const start=galleryPage*itemsPerPage;const end=start+itemsPerPage;memories.forEach((mem,i)=>{mem.style.display=(i>=start&&i<end)?'':'none'});gInfo.textContent=(galleryPage+1)+' / '+total;gPrev.disabled=galleryPage===0;gNext.disabled=galleryPage===total-1}gPrev.addEventListener('click',()=>{if(galleryPage>0){galleryPage--;updateGallery()}});gNext.addEventListener('click',()=>{const t=Math.ceil(memories.length/itemsPerPage);if(galleryPage<t-1){galleryPage++;updateGallery()}});updateGallery();
+</script>
+</body>
+</html>
