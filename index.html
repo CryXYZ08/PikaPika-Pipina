@@ -7,49 +7,226 @@
 <title>Pika-Pika & Pipina 💙💜</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080817; --text:#f7f5ff; --muted:#b9b5d4; --blue:#55b8ff; --violet:#9d75ff; --line:rgba(255,255,255,.12); --shadow:0 25px 70px rgba(0,0,0,.35);}
+:root{--bg:#080817; --panel:rgba(22,19,52,.62); --text:#f7f5ff; --muted:#b9b5d4; --blue:#55b8ff; --violet:#9d75ff; --line:rgba(255,255,255,.12); --shadow:0 25px 70px rgba(0,0,0,.35);}
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;background:radial-gradient(circle at 15% 10%,rgba(65,139,255,.20),transparent 32%),radial-gradient(circle at 88% 18%,rgba(155,89,255,.20),transparent 34%),radial-gradient(circle at 50% 85%,rgba(64,191,255,.10),transparent 38%),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6;overflow-x:hidden}
-.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:20;width:min(1040px,calc(100% - 28px));display:flex;justify-content:space-between;align-items:center;padding:11px 15px;border:1px solid var(--line);border-radius:22px;background:rgba(9,8,25,.68);backdrop-filter:blur(18px)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;white-space:nowrap;flex-shrink:0}.brand-dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet))}
-.navlinks{display:flex;gap:6px;flex-shrink:0}.navlinks a{padding:8px 11px;border-radius:12px;color:var(--muted);font-size:14px;white-space:nowrap}
-.hero{min-height:100vh;display:grid;place-items:center;padding:120px 20px 70px;text-align:center}
-.logo-wrap{width:min(320px,68vw);aspect-ratio:1/1;margin:0 auto 24px;background:#fff;border-radius:50%;border:5px solid #fff;overflow:hidden;display:grid;place-items:center}.logo-wrap img{width:100%;height:100%;object-fit:cover}
-h1{font-family:"Playfair Display",serif;font-size:clamp(34px,6vw,62px);line-height:1.08;margin:18px auto 16px;max-width:850px;background:linear-gradient(100deg,#fff 15%,#9bd7ff 48%,#c19aff 82%);-webkit-background-clip:text;color:transparent}
-section{width:min(1040px,calc(100% - 30px));margin:0 auto;padding:85px 0}.section-title{text-align:center;margin-bottom:36px}.card{background:linear-gradient(145deg,rgba(32,28,71,.76),rgba(14,13,37,.74));border:1px solid var(--line);border-radius:24px;padding:25px}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.11) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 80%);opacity:.18}
+a{color:inherit;text-decoration:none}
+@keyframes float{0%,100%{transform:translateY(0px)} 50%{transform:translateY(-12px)}}
+@keyframes floatSlow{0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-20px,15px) scale(0.95)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)}}
+@keyframes gradientShift{0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}}
+@keyframes floatPhoto{0%,100%{transform:translateY(0px)} 50%{transform:translateY(-7px)}}
+@keyframes floatPhoto2{0%,100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-9px) rotate(0.5deg)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 25px 70px rgba(0,0,0,.35)} 50%{box-shadow:0 15px 45px rgba(100,102,255,.25)}}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:20;width:min(1040px,calc(100% - 28px));display:flex;justify-content:space-between;align-items:center;padding:11px 15px;border:1px solid var(--line);border-radius:22px;background:rgba(9,8,25,.68);backdrop-filter:blur(18px);box-shadow:var(--shadow);animation:fadeInUp 0.8s ease-out}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;white-space:nowrap;flex-shrink:0}.brand-dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 0 22px var(--violet);animation:float 3s ease-in-out infinite;flex-shrink:0}
+.navlinks{display:flex;gap:6px;flex-shrink:0}.navlinks a{padding:8px 11px;border-radius:12px;color:var(--muted);font-size:14px;transition:all.2s;white-space:nowrap}.navlinks a:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-1px)}
+.hero{min-height:100vh;display:grid;place-items:center;padding:120px 20px 70px;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.30;pointer-events:none;animation:floatSlow 12s ease-in-out infinite}.orb.one{width:300px;height:300px;background:#3a7bff;left:-100px;top:25%}.orb.two{width:320px;height:320px;background:#8d38ff;right:-110px;top:20%;animation-delay:-6s}
+.hero-inner{width:min(1050px,100%);text-align:center;position:relative}
+.logo-wrap{width:min(320px,68vw);aspect-ratio:1/1;margin:0 auto 24px;background:#ffffff;border-radius:50%;border:5px solid #ffffff;box-shadow:0 0 0 10px rgba(255,255,255,0.15),0 25px 60px rgba(0,0,0,0.5);overflow:hidden;display:grid;place-items:center;animation:float 4s ease-in-out infinite, scaleIn 1s ease-out}
+.logo-wrap img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid rgba(160,150,255,.28);border-radius:999px;background:rgba(93,77,173,.13);color:#d8d4ff;font-size:13px;font-weight:600;animation:fadeInUp 0.8s ease-out 0.2s both}
+h1{font-family:"Playfair Display",serif;font-size:clamp(34px,6vw,62px);line-height:1.08;margin:18px auto 16px;max-width:850px;letter-spacing:-1.2px;background:linear-gradient(100deg,#fff 15%,#9bd7ff 48%,#c19aff 82%);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fadeInUp 0.9s ease-out 0.3s both, gradientShift 8s ease infinite}
+.hero p{max-width:680px;margin:0 auto;color:var(--muted);font-size:18px;animation:fadeInUp 0.9s ease-out 0.4s both}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px;animation:fadeInUp 0.9s ease-out 0.5s both}.btn{padding:13px 18px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-weight:700;transition:all.2s}.btn.primary{background:linear-gradient(135deg,#4baeff,#8d63ff);border-color:transparent;box-shadow:0 14px 35px rgba(100,102,255,.25)}.btn:hover{transform:translateY(-2px)}
+section{width:min(1040px,calc(100% - 30px));margin:0 auto;padding:85px 0}
+.section-title{text-align:center;margin-bottom:36px}.section-title.mini{color:#aab9ff;font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:700}.section-title h2{font-family:"Playfair Display",serif;font-size:clamp(28px,5vw,46px);margin:7px 0}.section-title p{color:var(--muted);max-width:620px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,rgba(32,28,71,.76),rgba(14,13,37,.74));border:1px solid var(--line);border-radius:24px;padding:25px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:all.3s}.card:hover{transform:translateY(-6px) scale(1.02)}
+.icon{font-size:28px;margin-bottom:12px}.card h3{margin:0 0 7px;font-size:19px}.card p{margin:0;color:var(--muted);font-size:15px}
 .gallery-ricordi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
-.memory{margin:0;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer}.memory img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.memory figcaption{padding:10px 12px;font-size:12.5px;text-align:center;background:rgba(22,19,52,.75);min-height:44px;display:grid;place-items:center}
-.gallery-nav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:24px}.gallery-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;font-size:22px;cursor:pointer}#gPageInfo{color:#b9b5d4;font-size:14px;background:rgba(255,255,255,.06);padding:6px 14px;border-radius:999px;border:1px solid var(--line)}
-.letter{max-width:850px;margin:auto;padding:38px;border-radius:30px;background:linear-gradient(145deg,rgba(65,52,126,.34),rgba(23,19,55,.8));border:1px solid rgba(181,166,255,.18)}.letter p{color:#dedbf0;font-size:17px;line-height:1.7;margin-bottom:16px}
-.future{display:grid;grid-template-columns:1.15fr.85fr;gap:18px}.qr-card{text-align:center}.qr-card img{width:190px;background:white;padding:12px;border-radius:18px;margin:12px auto}
-.lightbox{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;place-items:center;padding:20px}.lightbox.active{display:grid}#lb-img{max-width:100%;max-height:82vh;border-radius:16px}
-@media(max-width:900px){.gallery-ricordi{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.gallery-ricordi{grid-template-columns:1fr}.nav{width:calc(100% - 10px);top:8px;padding:8px 10px}.brand{font-size:12.5px}.navlinks a{padding:5px 6px;font-size:10.5px}}
+.memory{margin:0;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:all.45s cubic-bezier(0.175,0.885,0.32,1.275);cursor:pointer;position:relative;animation:floatPhoto 5.8s ease-in-out infinite, pulseGlow 4s ease-in-out infinite}
+.memory:nth-child(2n){animation:floatPhoto2 6.5s ease-in-out infinite, pulseGlow 4.5s ease-in-out infinite;animation-delay:0.4s}
+.memory:nth-child(3n){animation:floatPhoto 7.2s ease-in-out infinite, pulseGlow 5s ease-in-out infinite;animation-delay:0.8s}
+.memory:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 22px 55px rgba(0,0,0,.55);border-color:rgba(160,150,255,.5);animation-play-state:paused}
+.memory img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform.7s ease}.memory:hover img{transform:scale(1.1)}
+.memory figcaption{padding:10px 12px;font-size:12.5px;color:#dedbf0;text-align:center;background:rgba(22,19,52,.75);min-height:44px;display:grid;place-items:center;line-height:1.3}
+.memory:after{content:"🔍";position:absolute;top:8px;right:8px;width:28px;height:28px;background:rgba(0,0,0,.6);border-radius:50%;display:grid;place-items:center;font-size:14px;opacity:0;transition:opacity.3s}.memory:hover:after{opacity:1}
+.gallery-nav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:24px}
+.gallery-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:white;font-size:22px;display:grid;place-items:center;cursor:pointer;transition:all.2s}
+.gallery-nav button:hover{background:rgba(255,255,255,.18);transform:scale(1.08)}
+.gallery-nav button:disabled{opacity:.35;pointer-events:none}
+#gPageInfo{color:#b9b5d4;font-size:14px;font-weight:600;min-width:60px;text-align:center;background:rgba(255,255,255,.06);padding:6px 14px;border-radius:999px;border:1px solid var(--line)}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);display:none;place-items:center;padding:20px;opacity:0;transition:opacity.3s}
+.lightbox.active{display:grid;opacity:1}.lightbox-content{position:relative;max-width:min(92vw,1100px);max-height:92vh;display:grid;place-items:center;animation:scaleIn.35s ease-out}
+#lb-img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:16px;box-shadow:0 25px 80px rgba(0,0,0,.8);transition:opacity.42s, transform.42s;opacity:1;transform:translateX(0) scale(1)}
+#lb-img.lb-out{opacity:0;transform:translateX(-24px) scale(0.92)}
+#lb-img.lb-out-prev{opacity:0;transform:translateX(24px) scale(0.92)}
+#lb-img.lb-in{opacity:0;transform:translateX(24px) scale(0.92)}
+#lb-img.lb-in-prev{opacity:0;transform:translateX(-24px) scale(0.92)}
+.lightbox-caption{margin-top:14px;color:#e8e4ff;text-align:center;font-size:15px;max-width:700px;padding:8px 16px;background:rgba(255,255,255,.08);border-radius:12px}
+.lightbox-close{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);color:white;font-size:22px;display:grid;place-items:center;cursor:pointer;z-index:101}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);color:white;font-size:22px;display:grid;place-items:center;cursor:pointer}
+.lightbox-prev{left:18px}.lightbox-next{right:18px}
+.letter{max-width:850px;margin:auto;padding:38px;border-radius:30px;background:linear-gradient(145deg,rgba(65,52,126,.34),rgba(23,19,55,.8));border:1px solid rgba(181,166,255,.18);box-shadow:var(--shadow)}.letter p{color:#dedbf0;font-size:17px;line-height:1.7;margin-bottom:16px}.signature{margin-top:25px;color:#bda8ff;font-weight:700}
+.future{display:grid;grid-template-columns:1.15fr.85fr;gap:18px}.big-card{padding:32px}.big-number{font-size:60px;font-weight:700;line-height:1;background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;color:transparent;animation:float 3s ease-in-out infinite}
+.qr-card{text-align:center}.qr-card img{width:190px;max-width:100%;background:white;padding:12px;border-radius:18px;margin:12px auto}.qr-note{font-size:12px;color:#9c99b8}
+footer{padding:50px 20px 70px;text-align:center;color:#8f8aa9;font-size:13px}footer strong{color:#b9b2d8}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.9s cubic-bezier(0.25,0.46,0.45,0.94)}.reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.grid,.gallery-ricordi,.future{grid-template-columns:1fr}.gallery-ricordi{grid-template-columns:repeat(2,1fr)}.letter{padding:25px}.card{padding:21px}.logo-wrap{width:min(280px,68vw)}}
+@media(max-width:560px){.gallery-ricordi{grid-template-columns:1fr}.nav{width:calc(100% - 10px);top:8px;padding:8px 10px;gap:6px;border-radius:18px}.brand{font-size:12.5px;gap:6px}.brand-dot{width:8px;height:8px}.navlinks{gap:2px}.navlinks a{padding:5px 6px;font-size:10.5px;border-radius:9px}}
 </style>
 </head>
 <body>
-<nav class="nav"><a class="brand" href="#home"><span class="brand-dot"></span><span>Pika-Pika & Pipina</span></a><div class="navlinks"><a href="#storia">Storia</a><a href="#ricordi">Ricordi</a><a href="#lettera">Lettera</a><a href="#futuro">Futuro</a></div></nav>
-<header class="hero" id="home"><div class="logo-wrap"><img src="assets/logo.png" alt="Logo"></div><h1>Degli anni passati che ci portiamo anche nel futuro,</h1><p>Un piccolo spazio per la nostra amicizia.</p></header>
-<section id="ricordi"><div class="section-title"><h2>Le nostre avventure</h2><p>6 alla volta, frecce sotto per scorrere.</p></div>
-<div class="gallery-ricordi" id="gallery">
-<figure class="memory" data-src="assets/duo_delle_renne.jpg" data-caption="Duo delle renne"><img src="assets/duo_delle_renne.jpg"><figcaption>Duo delle renne</figcaption></figure>
-<figure class="memory" data-src="assets/mamma_cattiva_inBici.jpg" data-caption="Mamma cattiva in bici"><img src="assets/mamma_cattiva_inBici.jpg"><figcaption>Mamma cattiva in bici</figcaption></figure>
-<figure class="memory" data-src="assets/lotta_madre_figlio.jpg" data-caption="Lotta Madre Figlio"><img src="assets/lotta_madre_figlio.jpg"><figcaption>Lotta Madre Figlio</figcaption></figure>
-<figure class="memory" data-src="assets/Mery_distratta.jpg" data-caption="Mamma distratta"><img src="assets/Mery_distratta.jpg"><figcaption>Mamma distratta</figcaption></figure>
-<figure class="memory" data-src="assets/Mery_inBici.jpg" data-caption="Mamma tranquilla"><img src="assets/Mery_inBici.jpg"><figcaption>Stranamente tranquilla</figcaption></figure>
-<figure class="memory" data-src="assets/Mery_hellokitty.jpg" data-caption="Hello Kitty"><img src="assets/Mery_hellokitty.jpg"><figcaption>Hello Kitty</figcaption></figure>
-<figure class="memory" data-src="assets/Mery_minions.jpg" data-caption="Mery Minions"><img src="assets/Mery_minions.jpg"><figcaption>Mery Minions</figcaption></figure>
-<figure class="memory" data-src="assets/Mery_aspetta_immobiliare.jpg" data-caption="Compagnia ovunque"><img src="assets/Mery_aspetta_immobiliare.jpg"><figcaption>Compagnia ovunque</figcaption></figure>
-<figure class="memory" data-src="assets/Segnalazione_Mery.jpg" data-caption="Ribellione figlio"><img src="assets/Segnalazione_Mery.jpg"><figcaption>Ribellione del figlio</figcaption></figure>
-<figure class="memory" data-src="assets/vicinanza_dei_letti.png" data-caption="Vicinanza letti"><img src="assets/vicinanza_dei_letti.png"><figcaption>Vicinanza letti - Pika & terronina</figcaption></figure>
-<figure class="memory" data-src="assets/vicini_nell_armadietto.png" data-caption="Vicini armadietto 57 & 56"><img src="assets/vicini_nell_armadietto.png"><figcaption>Vicini armadietto 57 & 56</figcaption></figure>
-</div>
-<div class="gallery-nav"><button id="gPrev">‹</button><span id="gPageInfo">1 / 2</span><button id="gNext">›</button></div>
+<nav class="nav">
+  <a class="brand" href="#home"><span class="brand-dot"></span><span>Pika-Pika & Pipina</span></a>
+  <div class="navlinks"><a href="#storia">Storia</a><a href="#ricordi">Ricordi</a><a href="#lettera">Lettera</a><a href="#futuro">Futuro</a></div>
+</nav>
+<header class="hero" id="home">
+  <div class="orb one"></div><div class="orb two"></div>
+  <div class="hero-inner">
+    <div class="logo-wrap"><img src="assets/logo.png" alt="Logo"></div>
+    <span class="eyebrow">💙 Un piccolo posto per una grande amicizia 💜</span>
+    <h1>Degli anni passati che ci portiamo anche nel futuro,</h1>
+    <p>Questo non è solo un sito. È un piccolo spazio che possiamo continuare a riempire con momenti, risate, foto e ricordi della nostra amicizia.</p>
+    <div class="actions"><a class="btn primary" href="#storia">Scopri il nostro spazio ✨</a><a class="btn" href="#lettera">Una cosa per te 💌</a></div>
+  </div>
+</header>
+<section id="storia">
+  <div class="section-title reveal"><div class="mini">Il nostro viaggio</div><h2>Da poco amici, già importanti.</h2><p>Il bello è che la nostra storia non è ancora finita: siamo solo all'inizio.</p></div>
+  <div class="grid">
+    <article class="card reveal"><div class="icon">🌙</div><h3>Da dove siamo partiti</h3><p>Tutto è iniziato quando sei tornata in ospedale dopo tanto tempo. Ti sei seduta sul bancone fuori dalla reception per stare vicina a me. Abbiamo parlato tantissimo e, quando sei stata presa come tirocinante, ho ascoltato la tua spiegazione, quella che ti aveva dato la nostra Renna preferita. Da lì, giorno dopo giorno, siamo arrivati a darci la buonanotte e il buongiorno.</p></article>
+    <article class="card reveal"><div class="icon">🫶</div><h3>Quello che siamo oggi</h3><p>Una coppia di amici inseparabili che si vogliono un mondo di bene anche se si fanno scherzi o dispetti.</p></article>
+    <article class="card reveal"><div class="icon">✨</div><h3>Quello che verrà</h3><p>Quello che verrà si scoprirà sempre andando avanti con l'amicizia.</p></article>
+  </div>
 </section>
-<section id="futuro"><div class="future"><div class="card"><h3>Un sito che continua</h3><p>QR non cambia.</p></div><div class="card qr-card"><h3>Il nostro QR 💜</h3><img src="assets/qrcode.png" alt="QR"><div>Scansiona https://cryxyz08.github.io/pika-pipina/</div></div></div></section>
-<div class="lightbox" id="lightbox"><button id="lb-close" style="position:absolute;top:18px;right:18px">✕</button><button id="lb-prev" style="position:absolute;left:18px;top:50%">‹</button><img id="lb-img" src=""><button id="lb-next" style="position:absolute;right:18px;top:50%">›</button><div id="lb-cap"></div></div>
+<section id="ricordi">
+  <div class="section-title reveal"><div class="mini">Ricordi</div><h2>Le nostre avventure nei server e nei modpack</h2><p>Clicca su una foto per vederla ingrandita. 6 alla volta, frecce sotto per scorrere.</p></div>
+  <div class="gallery-ricordi" id="gallery">
+      <figure class="memory reveal" data-src="assets/duo_delle_renne.jpg" data-caption="Duo delle renne"><img src="assets/duo_delle_renne.jpg" alt="Duo delle renne" loading="lazy"><figcaption>Duo delle renne</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/mamma_cattiva_inBici.jpg" data-caption="Mamma cattiva in bici che vuole picchiare il figlio"><img src="assets/mamma_cattiva_inBici.jpg" alt="Mamma cattiva in bici che vuole picchiare il figlio" loading="lazy"><figcaption>Mamma cattiva in bici che vuole picchiare il figlio</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/lotta_madre_figlio.jpg" data-caption="Lotta Madre Figlio durante il lavoro della madre"><img src="assets/lotta_madre_figlio.jpg" alt="Lotta Madre Figlio durante il lavoro della madre" loading="lazy"><figcaption>Lotta Madre Figlio durante il lavoro della madre</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/Mery_distratta.jpg" data-caption="Mamma distratta che si dimentica il libro per il rifornimento della bancarella"><img src="assets/Mery_distratta.jpg" alt="Mamma distratta che si dimentica il libro per il rifornimento della bancarella" loading="lazy"><figcaption>Mamma distratta che si dimentica il libro per il rifornimento della bancarella</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/Mery_inBici.jpg" data-caption="Stranamente la mamma è tranquilla"><img src="assets/Mery_inBici.jpg" alt="Stranamente la mamma è tranquilla" loading="lazy"><figcaption>Stranamente la mamma è tranquilla</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/Mery_hellokitty.jpg" data-caption="Mamma in lotto Hello Kitty"><img src="assets/Mery_hellokitty.jpg" alt="Mamma in lotto Hello Kitty" loading="lazy"><figcaption>Mamma in lotto Hello Kitty</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/Mery_minions.jpg" data-caption="Mery Minions"><img src="assets/Mery_minions.jpg" alt="Mery Minions" loading="lazy"><figcaption>Mery Minions</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/Mery_aspetta_immobiliare.jpg" data-caption="un'amica che ti tiene compagnia ovunque vada"><img src="assets/Mery_aspetta_immobiliare.jpg" alt="un'amica che ti tiene compagnia ovunque vada" loading="lazy"><figcaption>un'amica che ti tiene compagnia ovunque vada</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/Segnalazione_Mery.jpg" data-caption="Ribellione del figlio che segnala la propria mamma"><img src="assets/Segnalazione_Mery.jpg" alt="Ribellione del figlio che segnala la propria mamma" loading="lazy"><figcaption>Ribellione del figlio che segnala la propria mamma</figcaption></figure>
+      <figure class="memory reveal" data-src="assets/vicini_nell_armadietto.png" data-caption="Vicini nell'armadietto - 57 CryX_YZ e 56 mxry122_"><img src="assets/vicini_nell_armadietto.png" alt="Vicini nell'armadietto - 57 CryX_YZ e 56 mxry122_" loading="lazy"><figcaption>Vicini nell'armadietto - 57 & 56</figcaption></figure>
+  </div>
+  <div class="gallery-nav" id="galleryNav">
+    <button id="gPrev" aria-label="Precedenti">‹</button>
+    <span id="gPageInfo">1 / 2</span>
+    <button id="gNext" aria-label="Successivi">›</button>
+  </div>
+</section>
+<section id="lettera">
+  <div class="section-title reveal"><div class="mini">Una lettera</div><h2>Per te.</h2></div>
+  <div class="letter reveal">
+    <p>Ci conosciamo da poco, forse non abbastanza da poter raccontare una vita intera insieme, ma abbastanza da capire che sei diventata una persona davvero importante per me.</p>
+<p>A volte non serve conoscere qualcuno da anni per sentire che quella persona è arrivata nella nostra vita nel momento giusto. Ci sono persone che entrano lentamente, quasi senza fare rumore, e poi, un giorno, ti accorgi che sono diventate parte delle tue giornate, dei tuoi pensieri e dei tuoi sorrisi. Tu sei una di quelle persone.</p>
+<p>Ho voluto creare questo piccolo spazio per noi perché non volevo semplicemente regalarti qualcosa che, prima o poi, sarebbe finito in un cassetto o sarebbe stato dimenticato. Volevo lasciarti qualcosa che potesse raccontare chi siamo, chi siamo stati e, soprattutto, tutto ciò che ancora dobbiamo vivere.</p>
+<p>Vorrei che questo sito fosse come una piccola macchina del tempo: un posto in cui tornare tra qualche mese, tra un anno o magari tra tantissimo tempo e rileggere queste parole sorridendo, ricordando tutte le cose che oggi sembrano piccole, ma che un giorno potrebbero diventare alcuni dei ricordi più belli.</p>
+<p>Tutto è iniziato quando sei tornata in ospedale dopo tanto tempo. Ti sei seduta sul bancone fuori dalla reception semplicemente per stare vicina a me. Forse in quel momento nessuno dei due avrebbe immaginato quanto importante sarebbe diventata quella semplice presenza.</p>
+<p>Abbiamo parlato tantissimo, di tutto e di niente, di cose serie e di cose del tutto senza senso. E proprio in quelle conversazioni, senza accorgercene, abbiamo iniziato a costruire qualcosa di speciale.</p>
+<p>Poi sei stata presa come tirocinante e io ho ascoltato la tua spiegazione, quella che ti aveva dato la nostra Renna preferita. Da lì è iniziato un altro pezzo della nostra storia.</p>
+<p>Giorno dopo giorno siamo arrivati a sentirci sempre di più, fino a quel piccolo ma bellissimo rito del buongiorno e della buonanotte. Sembrano parole semplici, quasi banali, ma quando arrivano dalla persona giusta possono significare tantissimo.</p>
+<p>E così, senza che ce ne rendessimo davvero conto, sei passata dall'essere semplicemente una persona che conoscevo a essere qualcuno che aspettavo di sentire, qualcuno con cui avevo voglia di parlare e qualcuno capace di migliorare anche una giornata normale.</p>
+<p>Oggi siamo una coppia di amici inseparabili.</p>
+<p>Siamo quelli che si vogliono un mondo di bene, ma che allo stesso tempo non perdono mai l'occasione per farsi scherzi, dispetti e prendere in giro a vicenda.</p>
+<p>Siamo risate improvvise, conversazioni infinite, momenti senza senso che solo noi riusciamo a capire e anche quelle giornate in cui magari non va tutto bene, ma basta esserci per rendere le cose un po' più leggere.</p>
+<p>E forse è proprio questo che rende speciale la nostra amicizia.</p>
+<p>Non dobbiamo essere perfetti. Non dobbiamo essere d'accordo su tutto. Non dobbiamo avere sempre qualcosa di importante da dirci. A volte basta semplicemente sapere che dall'altra parte c'è qualcuno.</p>
+<p>Una persona con cui puoi ridere, scherzare, parlare, lamentarti, confidarti e persino fare il cretino senza paura di essere giudicato.</p>
+<p>Per me sei diventata questo.</p>
+<p>Una presenza che ormai fa parte delle mie giornate.</p>
+<p>E anche se magari non te lo dico sempre, voglio che tu sappia che ci tengo davvero tanto a te e alla nostra amicizia.</p>
+<p>Quello che verrà non possiamo ancora saperlo.</p>
+<p>E forse è proprio questo il bello.</p>
+<p>Ci saranno giornate bellissime, momenti in cui rideremo fino a non riuscire più a smettere e probabilmente anche qualche giornata storta, qualche discussione, qualche incomprensione o semplicemente periodi in cui saremo troppo presi dalle nostre cose.</p>
+<p>Ma spero che, qualunque cosa succeda, riusciremo sempre a trovare il modo di tornare a ridere insieme.</p>
+<p>Spero che tra due anni, quando guarderemo indietro, potremo dire: "Guarda quante cose abbiamo vissuto".</p>
+<p>E magari continueremo a ricordare proprio quei piccoli momenti che oggi sembrano insignificanti: un messaggio arrivato nel momento giusto, una risata per una stupidaggine, una presa in giro, un buongiorno, una buonanotte, una conversazione infinita o semplicemente il fatto di esserci stati.</p>
+<p>Perché alla fine sono proprio le piccole cose a diventare i ricordi più grandi.</p>
+<p>Non so dove ci porterà questa amicizia.</p>
+<p>Non so quante altre pagine aggiungeremo a questa storia.</p>
+<p>Non so quante volte riremo, quante volte ci prenderemo in giro o quante nuove avventure vivremo.</p>
+<p>Ma so una cosa.</p>
+<p>Sono davvero felice che tra tutte le persone che avrei potuto incontrare, io abbia incontrato te.</p>
+<p>E sono ancora più felice che, in qualche modo, da quel giorno, seduti fuori dalla reception, siamo arrivati fino a qui.</p>
+<p>Questa non vuole essere una fine.</p>
+<p>Anzi.</p>
+<p>È appena l'inizio.</p>
+<p>Questa è soltanto la prima pagina di una storia che dobbiamo ancora scrivere.</p>
+<p>Il resto lo scriveremo noi, giorno dopo giorno, ricordo dopo ricordo, risata dopo risata.</p>
+<p>E quando un giorno torneremo qui a leggere queste parole, spero che ci guarderemo indietro con un sorriso enorme, pensando a quanto eravamo inconsapevoli di tutto quello che sarebbe successo.</p>
+<p>Grazie per essere entrata nella mia vita.</p>
+<p>Grazie per ogni risata.</p>
+<p>Grazie per ogni messaggio.</p>
+<p>Grazie per ogni scherzo.</p>
+<p>Grazie per ogni momento, anche quelli più semplici.</p>
+<p>E soprattutto, grazie per essere semplicemente tu.</p>
+<p>Pika-Pika & Pipina.</p>
+<p>Perché alcune amicizie non hanno bisogno di essere spiegate.</p>
+<p>Hanno solo bisogno di essere vissute.</p>
+<p>E spero che la nostra continui a farlo ancora per tantissimo tempo. 💙💜</p>
+    <div class="signature">Pika-Pika & Pipina — per sempre nel nostro piccolo mondo.</div>
+  </div>
+</section>
+<section id="futuro">
+  <div class="section-title reveal"><div class="mini">Il futuro</div><h2>Non è una pagina da riempire subito.</h2><p>È uno spazio che può cambiare ogni volta che nasce un nuovo ricordo.</p></div>
+  <div class="future">
+    <div class="card big-card reveal"><div class="big-number">∞</div><h3>Un sito che continua.</h3><p>Puoi aggiungere nuovi capitoli, foto e messaggi mantenendo sempre lo stesso indirizzo. Il QR stampato sul regalo non deve cambiare.</p></div>
+    <div class="card qr-card reveal"><h3>Il nostro QR 💜</h3><img src="assets/qrcode.png" alt="QR Code Pika-Pipina"><div class="qr-note">Scansiona per aprire https://cryxyz08.github.io/PikaPika-Pipina/</div></div>
+  </div>
+</section>
+<footer class="reveal">Creato con <strong>💙 amicizia, 💜 cura e ✨ tanti ricordi ancora da vivere.</strong><br>Pika-Pika & Pipina</footer>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev">‹</button>
+  <div class="lightbox-content"><img id="lb-img" src="" alt=""><div class="lightbox-caption" id="lb-cap"></div></div>
+  <button class="lightbox-nav lightbox-next" id="lb-next">›</button>
+</div>
 <script>
-const memories=Array.from(document.querySelectorAll('.memory'));const lightbox=document.getElementById('lightbox');const lbImg=document.getElementById('lb-img');const lbCap=document.getElementById('lb-cap');let currentIndex=0;function openLightbox(i){currentIndex=i;lbImg.src=memories[i].dataset.src;lbCap.textContent=memories[i].dataset.caption;lightbox.classList.add('active')}function closeLightbox(){lightbox.classList.remove('active')}memories.forEach((m,i)=>m.addEventListener('click',()=>openLightbox(i)));document.getElementById('lb-close').addEventListener('click',closeLightbox);document.getElementById('lb-prev').addEventListener('click',()=>{currentIndex=(currentIndex-1+memories.length)%memories.length;lbImg.src=memories[currentIndex].dataset.src});document.getElementById('lb-next').addEventListener('click',()=>{currentIndex=(currentIndex+1)%memories.length;lbImg.src=memories[currentIndex].dataset.src});lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
-const itemsPerPage=6;let galleryPage=0;const gPrev=document.getElementById('gPrev');const gNext=document.getElementById('gNext');const gInfo=document.getElementById('gPageInfo');function updateGallery(){const total=Math.ceil(memories.length/itemsPerPage);const start=galleryPage*itemsPerPage;const end=start+itemsPerPage;memories.forEach((mem,i)=>{mem.style.display=(i>=start&&i<end)?'':'none'});gInfo.textContent=(galleryPage+1)+' / '+total;gPrev.disabled=galleryPage===0;gNext.disabled=galleryPage===total-1}gPrev.addEventListener('click',()=>{if(galleryPage>0){galleryPage--;updateGallery()}});gNext.addEventListener('click',()=>{const t=Math.ceil(memories.length/itemsPerPage);if(galleryPage<t-1){galleryPage++;updateGallery()}});updateGallery();
+const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('active');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const memories=Array.from(document.querySelectorAll('.memory'));
+const lightbox=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+const lbCap=document.getElementById('lb-cap');
+const lbClose=document.getElementById('lb-close');
+const lbPrev=document.getElementById('lb-prev');
+const lbNext=document.getElementById('lb-next');
+let currentIndex=0;
+function openLightbox(index){currentIndex=index;const item=memories[currentIndex];lbImg.src=item.dataset.src;lbCap.textContent=item.dataset.caption;lightbox.classList.add('active');document.body.style.overflow='hidden';}
+function closeLightbox(){lightbox.classList.remove('active');document.body.style.overflow='';}
+let isAnimating=false;
+function animatedChange(newIdx,direction){
+  if(isAnimating)return;isAnimating=true;
+  const outClass=direction===1?'lb-out':'lb-out-prev';
+  const inClass=direction===1?'lb-in':'lb-in-prev';
+  lbImg.classList.add(outClass);lbCap.style.opacity='0';lbCap.style.transform='translateY(8px)';
+  setTimeout(()=>{currentIndex=newIdx;const item=memories[currentIndex];lbImg.classList.remove(outClass);lbImg.classList.add(inClass);lbImg.src=item.dataset.src;lbCap.textContent=item.dataset.caption;void lbImg.offsetWidth;requestAnimationFrame(()=>{lbImg.classList.remove(inClass);lbCap.style.opacity='1';lbCap.style.transform='translateY(0)';setTimeout(()=>{isAnimating=false;},420);});},320);
+}
+function showPrev(){const newIdx=(currentIndex-1+memories.length)%memories.length;animatedChange(newIdx,-1);}
+function showNext(){const newIdx=(currentIndex+1)%memories.length;animatedChange(newIdx,1);}
+memories.forEach((mem,i)=>{mem.addEventListener('click',()=>openLightbox(i));});
+lbClose.addEventListener('click',closeLightbox);lbPrev.addEventListener('click',showPrev);lbNext.addEventListener('click',showNext);
+lightbox.addEventListener('click',(e)=>{if(e.target===lightbox)closeLightbox();});
+document.addEventListener('keydown',(e)=>{if(!lightbox.classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')showPrev();if(e.key==='ArrowRight')showNext();});
+// PAGINAZIONE 6 PER VOLTA
+const itemsPerPage=6;
+let galleryPage=0;
+const gPrev=document.getElementById('gPrev');
+const gNext=document.getElementById('gNext');
+const gInfo=document.getElementById('gPageInfo');
+function updateGallery(){
+  const totalPages=Math.ceil(memories.length/itemsPerPage);
+  const start=galleryPage*itemsPerPage;
+  const end=start+itemsPerPage;
+  memories.forEach((mem,i)=>{
+    if(i>=start && i<end){mem.style.display=''; setTimeout(()=>mem.classList.add('active'),50);}
+    else{mem.style.display='none';}
+  });
+  gInfo.textContent=(galleryPage+1)+' / '+totalPages;
+  gPrev.disabled=galleryPage===0;
+  gNext.disabled=galleryPage===totalPages-1;
+}
+gPrev.addEventListener('click',()=>{if(galleryPage>0){galleryPage--;updateGallery();window.scrollTo({top:document.getElementById('ricordi').offsetTop-80,behavior:'smooth'});}});
+gNext.addEventListener('click',()=>{const total=Math.ceil(memories.length/itemsPerPage);if(galleryPage<total-1){galleryPage++;updateGallery();window.scrollTo({top:document.getElementById('ricordi').offsetTop-80,behavior:'smooth'});}});
+updateGallery();
 </script>
 </body>
 </html>
